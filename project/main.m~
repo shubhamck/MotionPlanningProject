@@ -29,11 +29,9 @@ Needle.Center=repmat([0;0],[1,size(Needle.Needle,2)]);
 %Node.cost
 %Node.h
 startNode.current = Needle;
-startNode.parent = 'None';
-startNode.cost = 0;
-startNode.h = 1000; %Some high number need to change !!
-startNode.f = startNode.cost + startNode.h;
-OPEN_LIST = startNode;
+Node.parent = Neeedle;
+Node.cost = 0;
+OPEN_LIST = newNode;
 
 %% Loop
 %While Goal not encountered

@@ -9,7 +9,8 @@ for i=1:2
     newNode = node;
     
     %Take step as step_size
-    newNode(1) = node(1) + ((-1)^i)*delta;
+%     newNode(1) = node(1) + ((-1)^i)*delta;
+    newNode.Needle = NeedleMovement(node.Needle,)
     
     %Update Parents
     newNode(3) = node(1);

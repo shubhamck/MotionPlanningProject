@@ -18,7 +18,7 @@ y=[y1,y2,y3];
 
 Points=[x;y];
 axis off
-for i=1:size(x,2)
+for i=1:size(x,2)   
 leq=[-7:0.1:y(i)];
 Points=[Points [repmat(x(i),[1,size(leq,2)]);leq]];
 end

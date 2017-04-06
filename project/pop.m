@@ -13,5 +13,6 @@ end
 node = OPEN_LIST(min_index);
 % newList = removerows(OPEN_LIST,'ind',i);
 OPEN_LIST(min_index) = [];
+newList = OPEN_LIST;
 end
 

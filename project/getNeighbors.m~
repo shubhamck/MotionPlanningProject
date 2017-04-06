@@ -52,9 +52,6 @@ for i=1:2
     newNode.h = heuristic(newNode,Goal);
     newNode.f = newNode.cost + newNode.h;
     
-    newNode.points = npoints;
-    newNode.points_grey = npoints_grey;
-    
     %Check for closed list
      if ~inClosedList(newNode, CLOSED_LIST)
         neighbors = [neighbors;newNode];

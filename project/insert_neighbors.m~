@@ -6,9 +6,10 @@ newList = OPEN_LIST;
 u_neighbors = neighbors;
 if size(OPEN_LIST,2)==0
     newList = [newList;u_neighbors];
+    return newList;
+end
 
 
-else
 rep_in = [];
 % Update costs for repeated nodes
 for i=1:size(neighbors)
@@ -19,7 +20,7 @@ for i=1:size(neighbors)
             rep_in = [rep_in,i];
         
         
-        elseif checkinList(neighbors(i),OPEN_LIST(j))
+        elseif checkinList(neighbors(i),OPEN_LIST(i))
             rep_in = [rep_in,i];
         end
     end
@@ -29,7 +30,6 @@ end
 u_neighbors(rep_in) = [];
 
 newList = [newList;u_neighbors];
-end
 
 
 end

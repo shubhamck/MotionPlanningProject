@@ -48,7 +48,7 @@ for i=1:2
     newNode.parent = node;
     
     %Update cost
-    newNode.cost = size(npoints_grey,2);
+    newNode.cost = 1*size(npoints_grey,2);
     newNode.h = heuristic(newNode,Goal);
     newNode.f = newNode.cost + newNode.h;
     

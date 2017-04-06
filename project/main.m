@@ -10,7 +10,7 @@ close all
 %Global Variables
 START_POSE = [-4; -2];  %Subject to Change
 GOAL_POSE = [4;-2];   %Subject to Change
-STEP_SIZE_X = 10;
+STEP_SIZE_X = 5;
 STEP_SIZE_THETA = 1;  %Subject to change
 CLOSED_LIST = [];
 OPEN_LIST = [];
@@ -64,7 +64,7 @@ OPEN_LIST = startNode;
 %While Goal not encountered
 %%while newNode(1)~=GOAL_POSE(1) && newNode(2)~=GOAL_POSE(2)
 disp('In Algorithm...')
-for i=1:500
+for i=1:600
     i
     [newNode, OPEN_LIST] = pop(OPEN_LIST);
     CLOSED_LIST = insert_closed(newNode, CLOSED_LIST);

@@ -13,18 +13,20 @@ for i=1:1
     ndelta_theta = 0;
     %Take step as step_size
 %     newNode(1) = node(1) + ((-1)^i)*delta;
-    [npoints, npoints_grey, newNode.current]  = NeedleMovement(node.current,Pivot,points, points_grey, ndelta, ndelta_theta);
+    [newNode.points, newNode.points_grey, newNode.current]  = NeedleMovement(node.current,Pivot,node.points, node.points_grey, ndelta, ndelta_theta);
     
     %Update Parents
     newNode.parent = node;
     
+%     newNode.points_grey =[newNode.parent.points_grey npoints_grey];
+%     newNode.points=npoints;
+    
     %Update cost
-    newNode.cost = size(npoints_grey,2);
-    newNode.h = heuristic(newNode,Goal);
+    newNode.cost = size(newNode.points_grey,2);
+%     newNode.h = heuristic(newNode,Goal);
+    [~,~,newNode.h] = manhattan_heuristic(newNode.current,Pivot(:,1),Goal);
     newNode.f = newNode.cost + newNode.h;
     
-    newNode.points = npoints;
-    newNode.points_grey = npoints_grey;
     
     %Check for closed list
     if ~inClosedList(newNode, CLOSED_LIST)
@@ -33,7 +35,7 @@ for i=1:1
     
 end
 % size(neighbors)
-%For Twist
+% For Twist
 for i=1:2
     newNode = node;
     
@@ -42,18 +44,22 @@ for i=1:2
     %Take step as step_size
 %     newNode(1) = node(1) + ((-1)^i)*delta;
     
-    [npoints, npoints_grey, newNode.current]  = NeedleMovement(node.current,Pivot,points, points_grey, ndelta, ndelta_theta);
+    [newNode.points, newNode.points_grey, newNode.current]  = NeedleMovement(node.current,Pivot,node.points, node.points_grey, ndelta, ndelta_theta);
     
     %Update Parents
     newNode.parent = node;
+% 
+%     newNode.points_grey =[newNode.parent.points_grey npoints_grey];
+%     newNode.points=npoints;
+%     newNode.points(newNode.points_grey == npoints)=[];
     
     %Update cost
-    newNode.cost = 1*size(npoints_grey,2);
-    newNode.h = heuristic(newNode,Goal);
+    newNode.cost = 1*size(newNode.points_grey,2);
+%     newNode.h = heuristic(newNode,Goal);
+    [~,~,newNode.h] = manhattan_heuristic(newNode.current,Pivot(:,1),Goal);
     newNode.f = newNode.cost + newNode.h;
     
-    newNode.points = npoints;
-    newNode.points_grey = npoints_grey;
+
     
     %Check for closed list
      if ~inClosedList(newNode, CLOSED_LIST)

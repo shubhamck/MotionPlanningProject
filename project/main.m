@@ -10,7 +10,7 @@ close all
 %Global Variables
 START_POSE = [-4; -2];  %Subject to Change
 GOAL_POSE = [4;-2];   %Subject to Change
-STEP_SIZE_X = 5;
+STEP_SIZE_X = 2;
 STEP_SIZE_THETA = 1;  %Subject to change
 CLOSED_LIST = [];
 OPEN_LIST = [];
@@ -41,10 +41,10 @@ Points_grey=[];
 % theta=[90:0.01:210];
 % Needle.Needle=[5*cosd(theta);5*sind(theta)];
 % Needle.Center=repmat([0;0],[1,size(Needle.Needle,2)]);
-Needle = NeedleInit(START_POSE,15,5);
+Needle = NeedleInit(START_POSE,0,5);
 
 %Define PIVOT
-Pivot=repmat(Needle.Needle(:,12000),[1,size(Needle.Needle,2)]);
+Pivot=repmat(Needle.Needle(:,12001),[1,size(Needle.Needle,2)]);
 %Initialize Nodes
 %Node is a struct : 
 %Node.current
@@ -64,17 +64,25 @@ OPEN_LIST = startNode;
 %While Goal not encountered
 %%while newNode(1)~=GOAL_POSE(1) && newNode(2)~=GOAL_POSE(2)
 disp('In Algorithm...')
-for i=1:600
+for i=1:10000
     i
     [newNode, OPEN_LIST] = pop(OPEN_LIST);
+    if abs(newNode.current.Needle(1,12001)-GOAL_POSE(1))<0.1 && abs(newNode.current.Needle(2,12001)-GOAL_POSE(2))<0.1
+        break;
+    end
     CLOSED_LIST = insert_closed(newNode, CLOSED_LIST);
     neighbors = getNeighbors(newNode,Pivot, STEP_SIZE_X, STEP_SIZE_THETA, CLOSED_LIST, OPEN_LIST, GOAL_POSE,Points, Points_grey);
     OPEN_LIST = insert_neighbors(neighbors, OPEN_LIST);
-end
 
+end
+    
+    
 %% Get Path
+[~,iter]=min([CLOSED_LIST.h]);
+finalNode=CLOSED_LIST(iter);
+
 disp('Getting Path...')
-path = getPath(newNode,startNode);
+path = getPath(finalNode,startNode);
 
 %Plotting path
 disp('Plotting...')

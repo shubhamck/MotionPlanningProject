@@ -1,3 +1,0 @@
-function h=heuristic(Node,Goal)
-
-h=norm(Node.current.Needle(:,12001),Goal,);

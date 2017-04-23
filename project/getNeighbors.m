@@ -1,4 +1,4 @@
-function [ neighbors ] = getNeighbors( node, Pivot,delta, delta_theta, CLOSED_LIST, OPEN_LIST,Goal,points, points_grey )
+function [ neighbors ] = getNeighbors( node, Pivot,delta, delta_theta, CLOSED_LIST, OPEN_LIST,Goal,points, points_grey, obstacle)
 % Gets the successors of the given Node by step sizes given
 % Assigns the given node as the Parent of all the successors
 
@@ -29,7 +29,7 @@ for i=1:1
     
     
     %Check for closed list
-    if ~inClosedList(newNode, CLOSED_LIST)
+    if ~inClosedList(newNode, CLOSED_LIST) && ~IsCollision(newNode.current,obstacle) %Obstacle definition incomplete
         neighbors = [neighbors;newNode];
     end
     
@@ -62,7 +62,7 @@ for i=1:2
 
     
     %Check for closed list
-     if ~inClosedList(newNode, CLOSED_LIST)
+     if ~inClosedList(newNode, CLOSED_LIST) && ~IsCollision(newNode.current,obstacle)
         neighbors = [neighbors;newNode];
      end
 end

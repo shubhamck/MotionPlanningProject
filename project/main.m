@@ -35,6 +35,10 @@ end
 Points=unique(Points','rows')';
 Points_grey=[];
 
+%obstacle definition
+obstacle = zeros(2,61);
+obstacle(1,:) = [-3:0.1:3];
+
 
 
 %Needle Initialize
@@ -71,7 +75,7 @@ for i=1:10000
         break;
     end
     CLOSED_LIST = insert_closed(newNode, CLOSED_LIST);
-    neighbors = getNeighbors(newNode,Pivot, STEP_SIZE_X, STEP_SIZE_THETA, CLOSED_LIST, OPEN_LIST, GOAL_POSE,Points, Points_grey);
+    neighbors = getNeighbors(newNode,Pivot, STEP_SIZE_X, STEP_SIZE_THETA, CLOSED_LIST, OPEN_LIST, GOAL_POSE,Points, Points_grey, obstacle);
     OPEN_LIST = insert_neighbors(neighbors, OPEN_LIST);
 
 end

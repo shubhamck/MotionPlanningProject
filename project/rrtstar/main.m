@@ -1,4 +1,5 @@
 clc
+<<<<<<< HEAD
 clear
 close all
 
@@ -29,3 +30,12 @@ obstacle(1,:) = [-3:0.1:3];
 %Global Variables
 START_POSE = [-4; -2];  %Subject to Change
 GOAL_POSE = [4;-2];   %Subject to Change
+=======
+clear all
+
+%Initialize Tissue
+
+%Initialize Needle
+
+%Initialize Obstacle
+>>>>>>> 8c81632f7a8887f1d672a446e2f36d55f8b9df90

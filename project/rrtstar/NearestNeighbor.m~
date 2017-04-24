@@ -1,0 +1,9 @@
+function [ q_near ] = NearestNeighbor( q_random, node_list )
+%Finds nearest neighbor given a randomly sampled node 
+cmin  = 1000000;
+for i=1:size(node_list)
+    if dist(q_random, node_list(i))
+end
+end 
+
+    

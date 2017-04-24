@@ -86,7 +86,7 @@ OPEN_LIST = startNode;
 %While Goal not encountered
 %%while newNode(1)~=GOAL_POSE(1) && newNode(2)~=GOAL_POSE(2)
 disp('In Algorithm...')
-gain=1;
+gain=0;
 for n=1:10
 %     struct newNode;
     newNode.current=NeedleInit(START_POSE,90-5*n,5);

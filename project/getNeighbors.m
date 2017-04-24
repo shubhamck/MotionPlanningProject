@@ -40,7 +40,7 @@ for i=1:2
     newNode = node;
     
     ndelta_theta = ((-1)^i)*delta_theta;
-    ndelta = 0;
+    ndelta = delta;
     %Take step as step_size
 %     newNode(1) = node(1) + ((-1)^i)*delta;
     

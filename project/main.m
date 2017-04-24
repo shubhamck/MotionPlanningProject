@@ -47,7 +47,7 @@ leq=[-1:0.1:1];
 obstacle=[obstacle [repmat(obstacle(1,i),[1,size(leq,2)]);leq]];
 end
 obstacle2(1,:)=[-5:0.1:5];
-obstacle2(2,:)=zeros(1,size(obstacle2,2));
+obstacle2(2,:)=repmat(-4,[size(obstacle2,2),1]);
 for i=1:size(obstacle,2)
 leq=[-6:0.1:-4];
 obstacle2=[obstacle2 [repmat(obstacle2(1,i),[1,size(leq,2)]);leq]];
